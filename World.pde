@@ -4,6 +4,7 @@ class World {
   
   private Player player;
   private int camX, camY;
+  private int camMover;
   
   
   public World() {
@@ -33,6 +34,19 @@ class World {
       p.tick();
     }
     player.tick();
+    camMover++;
+    if(camMover % 5 == 0) camY--;
+    if(player.y < camY + height / 2) {
+      camY = player.y - height / 2;
+    }
+    
+    if(player.y > camY + height + 30) {
+      println("DEAD");
+      try {
+      Thread.sleep(500);
+      } catch(Exception e) {}
+      init();
+    }
   }
   
   public void render() {

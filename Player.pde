@@ -7,10 +7,9 @@ class Player extends Entity {
   boolean onGround;
   
   public Player() {
-    super(width / 2 - 10, height / 2, 20, 20);
+    super(width / 2 - 10, height, 20, 20);
     vx = 0;
     vy = 0;
-    passThrough = 100;
   }
   
   public void tick() {
@@ -60,7 +59,6 @@ class Player extends Entity {
       y = height - w;
       onGround = true;
     }
-    world.camY = y - height / 2;
     checkPowerups();
     noJumpBound--;
     noCollision--;
